@@ -1,0 +1,214 @@
+.welcomeScreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex: 1;
+    padding: 40px 20px;
+}
+
+.welcomeContent {
+    max-width: 800px;
+    width: 100%;
+}
+
+.welcomeHeader {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInDown 0.6s ease;
+}
+
+.welcomeTitle {
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0 0 12px 0;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.welcomeSubtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.suggestionsContainer {
+    animation: fadeInUp 0.6s ease 0.2s both;
+}
+
+.suggestionsLabel {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.suggestionsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    width: 100%;
+}
+
+.suggestionCard {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    text-align: left;
+}
+
+.suggestionCard::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(59, 130, 246, 0.2) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.suggestionCard:hover {
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(59, 130, 246, 0.15) 100%);
+    border-color: var(--primary-purple);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(124, 58, 237, 0.15);
+}
+
+.suggestionCard:hover::before {
+    opacity: 1;
+}
+
+.suggestionCard:active {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.1);
+}
+
+.suggestionCard:focus {
+    outline: 2px solid var(--primary-purple);
+    outline-offset: 2px;
+}
+
+.suggestionCard:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.suggestionIcon {
+    font-size: 28px;
+    line-height: 1;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.suggestionCard:hover .suggestionIcon {
+    transform: scale(1.1);
+}
+
+.suggestionText {
+    flex: 1;
+}
+
+.suggestionText h3 {
+    margin: 0 0 6px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.suggestionText p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+}
+
+.suggestionCard:hover .suggestionText h3 {
+    color: var(--primary-purple);
+}
+
+.suggestionCard:hover .suggestionText p {
+    color: var(--text-primary);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .welcomeScreen {
+        padding: 30px 16px;
+    }
+
+    .welcomeHeader {
+        margin-bottom: 40px;
+    }
+
+    .welcomeTitle {
+        font-size: 28px;
+    }
+
+    .welcomeSubtitle {
+        font-size: 14px;
+    }
+
+    .suggestionsGrid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .suggestionCard {
+        padding: 16px;
+        flex-direction: row;
+        gap: 14px;
+    }
+
+    .suggestionIcon {
+        font-size: 24px;
+        flex-shrink: 0;
+    }
+
+    .suggestionText h3 {
+        font-size: 14px;
+    }
+
+    .suggestionText p {
+        font-size: 12px;
+    }
+
+    .suggestionCard:active {
+        transform: translateY(-1px);
+    }
+}
